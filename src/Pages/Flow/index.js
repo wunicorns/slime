@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, withRouter } from "react-router-dom";
 
+import './index.css';
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Grid from "@material-ui/core/Grid";
@@ -19,25 +21,20 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { withStyles } from "@material-ui/core/styles";
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-import transactionBoundariesModule from 'camunda-transaction-boundaries';
+
+// import transactionBoundariesModule from 'camunda-transaction-boundaries';
+import transactionBoundariesModule from 'bpmn-js-transaction-boundaries';
+
 import propertiesPanelModule from 'bpmn-js-properties-panel';
-import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
+
 import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda';
 
 import {withCategory} from "../../Contexts/CategoryContext";
 
-import apis from '../api'
+import style from './style';
 
-const style = {
-  root: "",
-  content: "",
-  listContainer: "",
-  listItem: "",
-  listItemCanvas: "",
-  drawer: "",
-  drawerPaper: "",
-  toolbar: ""
-}
+import apis from '../api'
 
 class Flower extends React.Component {
   constructor(props){
@@ -152,12 +149,14 @@ class Flower extends React.Component {
    
    openDiagram(bpmnXML) {
      const bpmnModeler = window.bpmnModeler;
-     bpmnModeler.importXML(bpmnXML, function(err){
+     bpmnModeler.importXML(bpmnXML).then(function(err){
        if(err){
          return console.error('could not import BPMN 2.0 diagram', err);
        }
        var transactionBoundaries = bpmnModeler.get('transactionBoundaries');
        transactionBoundaries.show();
+     }).catch((err)=>{
+       console.error(err)
      });
    }
    

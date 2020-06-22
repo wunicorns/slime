@@ -10,8 +10,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Home} />
         <Route path="/flow" component={Flow} />
+        <Route path="/" component={Home} />
         <Redirect path="*" to="/" />
       </Switch>
     </Router>
