@@ -22,6 +22,9 @@ import { withStyles } from "@material-ui/core/styles";
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
+import NavBar from '../../Components/NavBar';
+import LeftMenu from '../../Components/NavBar/leftmenu';
+
 // import transactionBoundariesModule from 'camunda-transaction-boundaries';
 import transactionBoundariesModule from 'bpmn-js-transaction-boundaries';
 
@@ -269,36 +272,19 @@ class Flower extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
+        <NavBar
+          // doReset={this.onResetClickEvent}
+          // doSave={this.onSaveClickEvent}
+          // doApply={this.onApplyClickEvent} 
+          />
+
+        <LeftMenu />
+
         <main className={classes.content}>
-          {/* <NavBar
-            doReset={this.onResetClickEvent}
-            doSave={this.onSaveClickEvent}
-            doApply={this.onApplyClickEvent} /> */}
-            
-          <Grid container
-            justify="flex-start"
-            className={classes.listContainer}>
-              <ListItem className={classes.listItem}>
-                <List>
-                {this.data.diagrams.map((diag, i)=>{
-                  return (
-                  <ListItem key={diag.diagram_id} role={undefined} dense button onClick={this.doSelectDiagram(diag)}>
-                    <ListItemIcon>
-                      <IConButton edge="end" aria-label="comments">
-                        <AccountTreeIcon />
-                      </IConButton>
-                    </ListItemIcon>
-                    <ListItemText id={diag.diagram_id} primary={`${diag.name}`} />
-                  </ListItem>
-                  );
-                })}
-                </List>
-              </ListItem>
-              <Grid item className={classes.listItemCanvas}>
-                <div id="canvas"></div>
-              </Grid>
-          </Grid>
-          </main>
+
+          <div id="canvas"></div>
+          
+        </main>
           
           <Drawer
             open={true}

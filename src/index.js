@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {CategoryProvider} from './Contexts/CategoryContext';
+import ThemeProvider from './Contexts/GlobalThemeProvider'
 
 ReactDOM.render(
   <React.StrictMode>
+    <ThemeProvider>
       <CategoryProvider default='flow'>
         <App />
       </CategoryProvider>
+      </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -38,6 +38,7 @@ export default (theme) => ({
     }
     , listItem: {
         maxWidth: '250px'
+        , width: '15%'
         , height: '100%'
     }
 
