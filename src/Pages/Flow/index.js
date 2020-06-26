@@ -86,7 +86,7 @@ class Flower extends React.Component {
    }
    
    componentDidMount() {
-     this.initModeler();
+    this.initModeler();
      this.diagramList();
      if(!this.data.current.diagramId){
        this.latest();
@@ -266,9 +266,10 @@ class Flower extends React.Component {
   onReceiveMessage(msg){
     console.log("-----", msg);
   }
-  
+
   render (){
     const {classes} = this.props;
+
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -293,7 +294,7 @@ class Flower extends React.Component {
             classes={{ paper: classes.drawerPaper }}
             anchor="right">
             <div className={classes.toolbar} />
-            {/* <divider /> */}
+            
             <div id="properties-panel"> </div>
           </Drawer>
 

@@ -129,15 +129,26 @@ function LeftMenu () {
     <Drawer
       className={classes.drawer}
       variant="permanent"
+      // classes={{
+      //   paper: classes.drawerPaper,
+      // }}
       classes={{
-        paper: classes.drawerPaper,
+        paper: clsx({
+          [classes.drawerPaper]: open,
+          [classes.drawerPaperClose]: !open,
+        }),
       }}
+
+      className={clsx(classes.drawer, {
+        [classes.drawerPaper]: open,
+        [classes.drawerPaperClose]: !open,
+      })}
     >
       <Toolbar />
       <div className={classes.drawerContainer}>
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} onClick={handleDrawerClose}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -146,7 +157,7 @@ function LeftMenu () {
         <Divider />
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text}  onClick={handleDrawerOpen}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>

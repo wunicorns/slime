@@ -23,7 +23,8 @@ export default (theme) => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        padding: 3
+        padding: 3,
+        paddingTop: '65px'
     }
     , sideList: {
         width:' 250px'
