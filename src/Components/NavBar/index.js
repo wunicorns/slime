@@ -16,6 +16,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+
 // import Drawer from '@material-ui/core/Drawer';
 // import List from '@material-ui/core/List';
 // import Divider from '@material-ui/core/Divider';
@@ -49,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+  },
+  link: {
+    margin: theme.spacing(1, 1.5),
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -241,6 +247,21 @@ function NavBar () {
                   Flow Chart
               </Typography>
 
+              <nav>
+                <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+                  Features
+                </Link>
+                <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+                  Enterprise
+                </Link>
+                <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+                  Support
+                </Link>
+              </nav>
+              <Button href="#" color="primary" variant="outlined" className={classes.link}>
+                Login
+              </Button>
+              
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
                 <IconButton aria-label="show 4 new mails" color="inherit">
